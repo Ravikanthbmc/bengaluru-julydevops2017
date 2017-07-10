@@ -1,0 +1,12 @@
+---
+
+- hosts: localhost 
+  vars:
+    my_list_of_packages:
+       - "One"
+       - "Two"
+       - "Three"
+
+  tasks:
+     - debug: msg="{{ item }}" 
+       with_items: "{{ my_list_of_packages }}"

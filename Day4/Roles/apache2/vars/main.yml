@@ -1,0 +1,5 @@
+---
+# vars file for apache2
+# All your custom user-defined variables can be defined here
+provisioner_tool: Docker
+automation_tool: Ansible

@@ -1,0 +1,7 @@
+---
+- name: This playbook will make use of our apache2 ansible role
+  hosts: all
+  become: yes
+
+  roles: 
+    - apache2

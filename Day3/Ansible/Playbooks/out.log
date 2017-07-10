@@ -1,0 +1,97 @@
+
+PLAY [This playbook will demonstrate ansible vault] ****************************
+
+TASK [setup] *******************************************************************
+ok: [172.17.0.2]
+ok: [172.17.0.3]
+ok: [172.17.0.4]
+ok: [172.17.0.5]
+
+TASK [Print the contacts dictionary conent] ************************************
+ok: [172.17.0.5] => (item={'key': u'Sriram', 'value': {u'mobile': u'999-456-7890', u'name': u'Sriram Jeganathan'}}) => {
+    "item": {
+        "key": "Sriram", 
+        "value": {
+            "mobile": "999-456-7890", 
+            "name": "Sriram Jeganathan"
+        }
+    }, 
+    "msg": "Mobile number of Sriram Jeganathan is 999-456-7890."
+}
+ok: [172.17.0.5] => (item={'key': u'Jegan', 'value': {u'mobile': u'123-456-7890', u'name': u'Jeganathan  Swaminathan'}}) => {
+    "item": {
+        "key": "Jegan", 
+        "value": {
+            "mobile": "123-456-7890", 
+            "name": "Jeganathan  Swaminathan"
+        }
+    }, 
+    "msg": "Mobile number of Jeganathan  Swaminathan is 123-456-7890."
+}
+ok: [172.17.0.4] => (item={'key': u'Sriram', 'value': {u'mobile': u'999-456-7890', u'name': u'Sriram Jeganathan'}}) => {
+    "item": {
+        "key": "Sriram", 
+        "value": {
+            "mobile": "999-456-7890", 
+            "name": "Sriram Jeganathan"
+        }
+    }, 
+    "msg": "Mobile number of Sriram Jeganathan is 999-456-7890."
+}
+ok: [172.17.0.4] => (item={'key': u'Jegan', 'value': {u'mobile': u'123-456-7890', u'name': u'Jeganathan  Swaminathan'}}) => {
+    "item": {
+        "key": "Jegan", 
+        "value": {
+            "mobile": "123-456-7890", 
+            "name": "Jeganathan  Swaminathan"
+        }
+    }, 
+    "msg": "Mobile number of Jeganathan  Swaminathan is 123-456-7890."
+}
+ok: [172.17.0.3] => (item={'key': u'Jegan', 'value': {u'mobile': u'123-456-7890', u'name': u'Jeganathan  Swaminathan'}}) => {
+    "item": {
+        "key": "Jegan", 
+        "value": {
+            "mobile": "123-456-7890", 
+            "name": "Jeganathan  Swaminathan"
+        }
+    }, 
+    "msg": "Mobile number of Jeganathan  Swaminathan is 123-456-7890."
+}
+ok: [172.17.0.3] => (item={'key': u'Sriram', 'value': {u'mobile': u'999-456-7890', u'name': u'Sriram Jeganathan'}}) => {
+    "item": {
+        "key": "Sriram", 
+        "value": {
+            "mobile": "999-456-7890", 
+            "name": "Sriram Jeganathan"
+        }
+    }, 
+    "msg": "Mobile number of Sriram Jeganathan is 999-456-7890."
+}
+ok: [172.17.0.2] => (item={'key': u'Jegan', 'value': {u'mobile': u'123-456-7890', u'name': u'Jeganathan  Swaminathan'}}) => {
+    "item": {
+        "key": "Jegan", 
+        "value": {
+            "mobile": "123-456-7890", 
+            "name": "Jeganathan  Swaminathan"
+        }
+    }, 
+    "msg": "Mobile number of Jeganathan  Swaminathan is 123-456-7890."
+}
+ok: [172.17.0.2] => (item={'key': u'Sriram', 'value': {u'mobile': u'999-456-7890', u'name': u'Sriram Jeganathan'}}) => {
+    "item": {
+        "key": "Sriram", 
+        "value": {
+            "mobile": "999-456-7890", 
+            "name": "Sriram Jeganathan"
+        }
+    }, 
+    "msg": "Mobile number of Sriram Jeganathan is 999-456-7890."
+}
+
+PLAY RECAP *********************************************************************
+172.17.0.2                 : ok=2    changed=0    unreachable=0    failed=0   
+172.17.0.3                 : ok=2    changed=0    unreachable=0    failed=0   
+172.17.0.4                 : ok=2    changed=0    unreachable=0    failed=0   
+172.17.0.5                 : ok=2    changed=0    unreachable=0    failed=0   
+

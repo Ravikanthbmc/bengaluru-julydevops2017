@@ -1,0 +1,13 @@
+---
+
+- name: Configure apache web server in Ubuntu
+  copy: 
+    src: secrets 
+    dest: /root
+  notify:
+      - Restart apache in Ubuntu server
+
+- name: Copy apache config file in Ubuntu
+  copy: src=apache2.conf dest=/etc/apache2/apache2.conf
+  notify:
+      - Restart apache in Ubuntu server

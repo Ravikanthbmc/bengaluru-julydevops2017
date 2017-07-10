@@ -1,0 +1,12 @@
+---
+
+- name: This playbook will demonstrate ansible vault 
+  hosts: localhost 
+
+  vars_files:
+    - secrets
+
+  tasks:
+     - name: Print the contacts dictionary conent
+       debug: msg="Key is {{ item.key }} Mobile number of {{ item.value.name }} is {{ item.value.mobile }}."
+       with_dict: "{{ contacts }}"

@@ -1,0 +1,24 @@
+---
+
+- name: This playbook will use of add custom module
+  hosts: localhost
+
+  tasks:
+     - name: Invoke our custom module 
+       add: input1=50 input2=200
+       register: output
+
+     - name: Second Task
+       debug: msg="Second Task"
+       tags:
+         - Second
+
+     - name: Print debug statements
+       debug: msg="Third task" 
+       tags:
+        - Third 
+
+     - name: Print debug statements
+       debug: msg="Fourth task" 
+       tags:
+        - Fourth 

@@ -1,0 +1,75 @@
+---
+
+- name: This playbook will demonstrate how to use apt module in ubuntu container
+  hosts: all 
+  become: yes 
+  vars:
+    - provisioner_tool: Docker 
+    - automation_tool: Ansible 
+
+  vars_files:
+    - secrets
+
+  tasks:
+     - name: Print the contacts dictionary conent
+       debug: msg="Mobile number of {{ item.value.name }} is {{ item.value.mobile }}."
+       tags:
+         - task1
+ 
+
+     - name: Install nginx web server on Ubuntu container
+       apt: name=nginx state=present update_cache=yes
+       when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+       tags:
+         - task2
+
+     - name: Install epel release package on CentOS container 
+       yum: name=epel-release state=present 
+       when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+       tags:
+         - task3
+
+     - name: Install nginx web server on CentOS container
+       yum: name=nginx state=present 
+       when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+       tags:
+         - task4
+
+     - name: Configure nginx web server on Ubuntu container
+       copy: 
+          src: nginx_{{ ansible_distribution }}.conf 
+          dest: /etc/nginx/nginx.conf
+       register: out_status 
+       notify:
+          - Restart nginx web server on {{ ansible_distribution }} container 
+       when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+       tags:
+         - task5
+
+     - name: Configure nginx web server on CentOS container
+       copy: 
+          src: "nginx_{{ansible_distribution}}.conf"
+          dest: /etc/nginx/nginx.conf
+       register: out_status 
+       notify:
+          - Restart nginx web server on CentOS container 
+       when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+       tags:
+         - task6
+
+     - name: Deploy home page into nginx web server on Ubuntu container
+       template: src=index.html.j2 dest=/var/www/html/index.html 
+       when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+       tags:
+         - task7
+
+     - name: Deploy home page into nginx web server on CentOS container
+       template: src=index.html.j2 dest=/usr/share/nginx/html/index.html 
+       when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+       tags:
+         - task8
+  
+  handlers:
+     - name: Restart nginx web server on Ubuntu container
+       service: name=nginx state=restarted 
+       listen: Restart nginx web server on CentOS container

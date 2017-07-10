@@ -1,0 +1,7 @@
+[ubuntu]
+ubuntu1 ansible_port=2000 
+
+[all:vars]
+ansible_become_password=root 
+ansible_host=localhost
+
